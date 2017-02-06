@@ -1,0 +1,140 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+
+
+*{
+	box-sizing: border-box;
+}
+
+a{
+	text-decoration: none;
+	color: #337ab7;
+}
+
+button{
+	background-color: #f1f1f1;
+	padding: 5px 10px;
+	border: 1px solid #777;
+	margin: 20px 5px;
+	color: #555;
+	cursor: pointer;
+	transition: border 0.5s background-color 0.5s padding 0.5s margin 0.5s;
+}
+
+button:hover{
+	border: 1px solid #555;
+	background-color: #fff;
+	padding: 6px 11px;
+	margin: 19px 3px;
+}
+
+button:focus, input:focus{
+	outline: none;
+}
+
+.wrapper{
+	width: 100%;
+}
+
+.navbar{
+	position: fixed;
+	top:0;
+	width:100%;
+	padding: 10px;
+	border-bottom: 1px solid #888;
+	transition: padding 0.5s;
+	background-color: #fff;
+}
+
+.navbar ul li{
+	display: inline-block;
+	padding: 5px;
+	margin: 3px;
+}
+
+.navbar:hover{
+	border-bottom: 1px solid #666;
+	padding: 12px;
+}
+
+.header{
+	width: 100%;
+	background-color: gainsboro;
+	text-align: center;
+	padding: 140px 20px 60px 20px;
+	margin-bottom: 20px;
+}
+
+.header span{
+	color: ghostwhite;
+	font-size: 30px;
+	padding: 20px;
+	font-family: 'Roboto', sans-serif;
+}
+
+.books, .mybooks{
+	width: 84%;
+	margin: 50px 8% 70px 8%;
+	padding: 20px;
+}
+
+.book{
+	display: inline-block;
+	width: 250px;
+	text-align: center;
+	border: 1px solid #aaa;
+	margin: 5px;
+	padding: 10px;
+}
+
+.book:hover{
+	border: 1px solid #777;
+}
+
+.book span{
+	display: block;
+	margin-bottom: 10px;
+}
+
+.login, .signup{
+	width: 70%;
+	margin: 30px 15% 50px 15%;
+	text-align: center;
+}
+
+.login form, .signup form{
+	margin: 20px 0;
+}
+
+.login form input, .signup form input{
+	width: 250px;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid #fff;
+	border-bottom: 1px solid #888;
+	transition: all 0.4s;
+}
+
+.login form input:hover, .signup form input:hover{
+	border-bottom: 1px solid #444;
+}
+
+
+.login form button, .signup form button{
+	background-color: #f7f7f9;
+	padding: 5px 10px;
+	border: 1px solid #777;
+	margin: 20px 5px;
+	color: #555;
+	cursor: pointer;
+	transition: all 0.5s;
+}
+
+.login form button:focus, .login form input:focus, .signup form button:focus, .signup form input:focus{
+	outline: none;
+}
+
+.login form button:hover{
+	border: 1px solid #444;
+	background-color: #fff;
+}
