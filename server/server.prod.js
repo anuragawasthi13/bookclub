@@ -34,6 +34,9 @@ app.use(passport.session());
 
 app.use("/api", require("./api/api"));
 
+app.get("/", function(req, res){
+  res.status(200).end(renderFullPage());
+});
 
 function renderFullPage() {
   return `
