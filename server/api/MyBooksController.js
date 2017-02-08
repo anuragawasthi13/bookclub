@@ -30,7 +30,8 @@ myBooksController.addBook = function(req,res){
       if(err){
         throw err;
       }
-      if(data){
+
+      if(data.items){
         var newbook = new Book({
         bookId: new puid().generate(),
         title: data.items[0].volumeInfo.title,
@@ -44,7 +45,7 @@ myBooksController.addBook = function(req,res){
         res.send(data);
       });
     } else{
-
+      res.send(null);
     }
     
   });  

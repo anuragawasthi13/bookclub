@@ -72,7 +72,7 @@ export default class Mybooks extends Component {
           <div style = {style1}>
             <h4>Add books</h4>
             <form onSubmit={this.handleSubmit.bind(this)}>
-              <input style = {{width: "50%", minWidth: "300px", maxWidth: "600px"}} type="text" onChange={this.handleChange.bind(this)} value={this.state.addbook} placeholder = "Enter book anme and press enter" />
+              <input style = {{width: "50%", minWidth: "300px", maxWidth: "600px"}} type="text" onChange={this.handleChange.bind(this)} value={this.state.addbook} placeholder = "write book name and press enter" />
             </form>
           </div>
           

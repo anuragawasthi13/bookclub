@@ -21,10 +21,15 @@ export function addBooks(book){
   		})
     }).then(response=>response.json()).then(json=>{
       console.log(json);
-      dispatch({
-        type:"addbook",
-        book:json
-      })
+      if(json){
+        dispatch({
+          type:"addbook",
+          book:json
+        });
+      } else{
+        
+      }
+      
     })
   }
 }
