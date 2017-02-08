@@ -12,6 +12,8 @@ import passport from "passport";
 
 import bodyParser from "body-parser";
 
+import path from "path";
+
 require("dotenv").config();
 
 const compiler = webpack(config);
@@ -36,6 +38,8 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
+app.use(Express.static(path.resolve(__dirname + "./../public/")));
 
 app.set('view engine', 'handlebars');
 

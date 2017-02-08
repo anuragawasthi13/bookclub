@@ -8,6 +8,8 @@ import passport from "passport";
 
 import bodyParser from "body-parser";
 
+import path from "path";
+
 require("dotenv").config();
 
 const app = Express();
@@ -23,6 +25,8 @@ mongoose.connect(process.env.NODE_ENV == "development" ? "mongodb://localhost/bo
 app.use(bodyParser.json());
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
+app.use(Express.static(path.resolve(__dirname + "./../public/")));
 
 app.set('view engine', 'handlebars');
 
