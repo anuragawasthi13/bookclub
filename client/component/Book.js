@@ -29,12 +29,16 @@ export default class Book extends Component {
       padding: "5px 10px"
     }
 
+    console.log(this.props);
+
+    const buttons = this.props.disabled ? <button disabled = {this.props.disabled}>Request</button> : <button onClick={this.request.bind(this)}>Request</button>;
+
     return(
 
       <div className = "book">
         <span>{this.props.book.title}</span>
         <div style={style1}></div>
-        {this.props.book.owner==this.props.username ? <small style = {style2}>This book is yours</small> : <button onClick={this.request.bind(this)}>Request</button>}
+        {this.props.book.owner==this.props.username ? <small style = {style2}>This book is yours</small> : buttons}
       </div>
     
     );

@@ -120,6 +120,28 @@ export function getAlRequests(username) {
 }
 
 
+export function acceptRequest(requestId){
+  return (dispatch)=>{
+    fetch("/api/acceptrequest", {
+      headers:{
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body:JSON.stringify({
+        id: requestId              
+      })
+    }).then(response=>response.json()).then(json=>{
+      if(json.success){
+        dispatch({
+          type: "ACCEPTREQUEST",
+          id: requestId
+        })
+      }
+    });
+  }
+}
+
 /**
 
 Boooks actions
@@ -345,5 +367,46 @@ export function updateInfoAction(state){
 /**
 
 Setting actions
+
+**/
+
+
+/**
+
+User actions
+
+**/
+
+export function getUserInfo(username, cb){
+
+  console.log("GETUSERINFO");
+  return (dispatch)=>{
+    fetch("/api/getuserinfo",{
+      headers:{
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      method: "POST",
+      body: JSON.stringify({
+        username: username
+      })
+    }).then(response=>response.json()).then(json=>{
+      dispatch({
+        type: "SETUSERDATA",
+        user: json.user,
+        books: json.books
+      })
+    }).catch((err)=>{
+      console.log("Error while requesting user data");
+    })
+  }
+  
+
+}
+
+
+/**
+
+User actions
 
 **/

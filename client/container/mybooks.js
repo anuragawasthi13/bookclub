@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {browserHistory} from "react-router";
 
-import { addBooks, getAllMyBooks,deleteBook } from "./../actions/action";
+import { addBooks, getAllMyBooks, deleteBook } from "./../actions/action";
 
 import Logout from "./Logout.js"
 import Nav from "./../component/Nav";
@@ -51,7 +51,15 @@ export default class Mybooks extends Component {
       this.props.getAllMyBooks();
     }
   }
+
   render(){
+    const style1 = {
+      width: "60%",
+      margin: "20px 20% 30px 20%",
+      textAlign: "center",
+      border: "1px solid #999",
+      padding: "20px"
+    }
     return (
       <div>
         
@@ -61,15 +69,15 @@ export default class Mybooks extends Component {
 
         <div className = "mybooks">
 
-          <div>
+          <div style = {style1}>
+            <h4>Add books</h4>
             <form onSubmit={this.handleSubmit.bind(this)}>
-              <input type="text" onChange={this.handleChange.bind(this)} value={this.state.addbook} />
-              <button type="submit">Submit</button>
+              <input style = {{width: "50%", minWidth: "300px", maxWidth: "600px"}} type="text" onChange={this.handleChange.bind(this)} value={this.state.addbook} placeholder = "Enter book anme and press enter" />
             </form>
           </div>
           
           <div>
-            {this.props.user && this.props.mybooks.length==0 ? <p>You have no books. Add some books.</p> : this.props.mybooks.map((book,i)=><Mybook key={i} delete={this.delete} book={book} />)}
+            {this.props.user && this.props.mybooks.length==0 ? <p>You have no books. Add some books.</p> : this.props.mybooks.map((book,i)=><Mybook key={i} delete={this.delete.bind(this)} book={book} />)}
           </div>
           <Logout />
 

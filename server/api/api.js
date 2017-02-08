@@ -20,6 +20,8 @@ const myBooksController = require("./MyBooksController");
 
 const booksController = require("./BooksController");
 
+const userController = require("./UserController");
+
 router.post("/addbook", myBooksController.addBook);
 
 router.post("/getbooksofuser", myBooksController.getBookOfUser);
@@ -31,13 +33,7 @@ router.post("/getrequests", booksController.getRequests);
 //   #################
 //   Dummy apis
 //   #################
-router.get("/getallbooks", function(req,res){
-  Book.find({}).exec(function(err,data){
-    if(err)
-      throw err;
-    res.send(data);
-  })
-})
+router.get("/getallbooks", booksController.getAllBook);
 
 router.get("/getallusers", function(req,res){
   User.find({}).exec(function(err,data){
@@ -101,6 +97,7 @@ router.post("/updateinfo", function(req, res){
 
 router.post("/requestbook", booksController.requestbook);
 
+router.post("/acceptrequest", booksController.acceptRequest);
 
 passport.serializeUser(function(user, done) {
     done(null, user.username);
@@ -153,6 +150,8 @@ router.post('/login', function(req, res, next) {
   })(req, res, next);
 });
 
+router.post("/getuserinfo", userController.getUserInfo);
+
 router.get("/dropdbs", function(req, res){
 
   res.json({
@@ -160,10 +159,13 @@ router.get("/dropdbs", function(req, res){
   });
 
   //drop collection user
-  mongoose.connection.db.dropCollection("BCBooks", function(err, result){log.info(err, result)});
+  mongoose.connection.db.dropCollection("bcbooks", function(err, result){log.info(err, result)});
 
   //drop collection book
   mongoose.connection.db.dropCollection("bcusers", function(err, result){log.info(err, result)});
+
+  //drop collection request
+  mongoose.connection.db.dropCollection("bcrequests", function(err, result){log.info(err, result)});
 });
 
 module.exports = router;

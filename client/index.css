@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=PT+Sans|Pangolin|Roboto|Sansita);
 
 
 
@@ -21,6 +21,11 @@ button{
 	transition: border 0.5s background-color 0.5s padding 0.5s margin 0.5s;
 }
 
+button:disabled{
+	opacity: 0.7;
+	cursor: pointer;
+}
+
 button:hover{
 	border: 1px solid #555;
 	background-color: #fff;
@@ -28,8 +33,40 @@ button:hover{
 	margin: 19px 3px;
 }
 
+
 button:focus, input:focus{
 	outline: none;
+}
+
+button["disabled"]:hover{
+}
+
+button:disabled:hover{
+}
+
+input{
+	width: 250px;
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid #fff;
+	border-bottom: 1px solid #888;
+	transition: all 0.4s;
+}
+
+input:hover{
+	border-bottom: 1px solid #444;
+}
+
+
+.header:after{
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	bottom: 0;
+	opacity: 0.5;
+	background-color: #ccc;
+	z-index: 4;
 }
 
 .wrapper{
@@ -55,21 +92,6 @@ button:focus, input:focus{
 .navbar:hover{
 	border-bottom: 1px solid #666;
 	padding: 12px;
-}
-
-.header{
-	width: 100%;
-	background-color: gainsboro;
-	text-align: center;
-	padding: 140px 20px 60px 20px;
-	margin-bottom: 20px;
-}
-
-.header span{
-	color: ghostwhite;
-	font-size: 30px;
-	padding: 20px;
-	font-family: 'Roboto', sans-serif;
 }
 
 .books, .mybooks{

@@ -8,17 +8,19 @@ import App from "./container/App.js";
 import Login from "./container/Login.js";
 import Signup from "./container/Signup.js";
 import Settings from "./container/Settings.js";
+import User from "./container/User.js"
 
 const AppRouter = () => {
   return (
     <Router history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={AppRoot} />
-        <Route path="login" component={Login} />
-        <Route path="signup" component={Signup} />
-        <Route path="books" component={Books} />
-        <Route path="mybooks" component={Mybooks}/>
+        <Route path = "login" component = {Login} />
+        <Route path = "signup" component = {Signup} />
+        <Route path = "books" component = {Books} />
+        <Route path = "mybooks" component = {Mybooks}/>
         <Route path = "setting" component = {Settings} />
+        <Route path = "user/:username" component = {User} />
       </Route>
     </Router>
   );

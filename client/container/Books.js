@@ -8,18 +8,22 @@ import OtherRequests from "./../component/OtherRequests";
 import Book from "./../component/Book";
 import Header from "./../component/Header";
 
-import {getAllBooks,requestBook, getAlRequests} from "./../actions/action";
+import {getAllBooks,requestBook, getAlRequests, acceptRequest} from "./../actions/action";
 
 
 function mapStateToProps(state){
   return state;
 }
 
-@connect(mapStateToProps,{getAllBooks, requestBook, getAlRequests})
+@connect(mapStateToProps,{getAllBooks, requestBook, getAlRequests, acceptRequest})
 export default class Books extends Component{
 
   constructor(props){
     super(props);
+  }
+
+  acceptRequest(requestId){
+    this.props.acceptRequest(requestId);
   }
 
   componentDidMount(){
@@ -50,14 +54,24 @@ export default class Books extends Component{
 
         {this.props.user && <MyRequests requests = {this.props.myrequests} />}
 
-        {this.props.user && <OtherRequests requests = {this.props.otherrequests} />}
+        {this.props.user && <OtherRequests requests = {this.props.otherrequests} acceptRequest = {this.acceptRequest.bind(this)} />}
 
         <div className = "books">
           
           {
             this.props.books && this.props.books.length==0 ? 
               <strong>There are no books. Add Some.</strong> : 
-              this.props.books.map((book,i)=> <Book key = {i} username = {username} book = {book} requestBook = {this.props.requestBook}/>)
+              this.props.books.map((book,i)=> {
+              let disabled = false;
+
+              this.props.myrequests.forEach(req=>{
+                if(req.book.bookId == book.bookId){
+                  console.log("should display");
+                  disabled = true;
+                }
+              });
+              return <Book key = {i} username = {this.props.user.username} book = {book} disabled = {disabled} requestBook = {this.props.requestBook} />
+            })
           }
 
         </div>

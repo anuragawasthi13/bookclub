@@ -8,7 +8,14 @@ const Initial_State={
   "wrongAuthentication": false,
   "user": null,
   "myrequests":[],
-  "otherrequests": []
+  "otherrequests": [],
+  "otheruser": {
+      username: null,
+      name: null,
+      city: null,
+      state: null,
+      books: []
+  }
 };
 
 
@@ -63,6 +70,23 @@ const reducer = function(state=Initial_State, action){
         otherrequests: action.data.otherrequests
       });
 
+    case "ACCEPTREQUEST":
+
+      return {
+        ...state,
+        myrequests: state.myrequests.map((request)=>{
+          if(request._id === action.id){
+
+            return {
+              ...request,
+              granted: true
+            }
+            
+          }
+
+          return request;
+        })
+      }
     case "updateinfo":
       var user = state.user;
       user = Object.assign({}, user, {
@@ -73,7 +97,17 @@ const reducer = function(state=Initial_State, action){
 
       return Object.assign({}, state, {
         user: user
-      }); 
+      });
+
+    case "SETUSERDATA":
+      return {
+        ...state,
+        otheruser:{
+          ...state.otheruser,
+          ...action.user,
+          books: action.books
+        }
+      }  
     default:
       return state;
   }
