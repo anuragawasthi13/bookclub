@@ -10,13 +10,6 @@
     "start": "node server.js"
   },
   "dependencies": {
-    "babel-core": "*",
-    "babel-loader": "*",
-    "babel-plugin-transform-decorators-legacy": "*",
-    "babel-preset-es2015": "*",
-    "babel-preset-react": "*",
-    "babel-preset-stage-0": "*",
-    "babel-register": "*",
     "body-parser": "*",
     "dotenv": "^4.0.0",
     "express": "*",
@@ -36,11 +29,20 @@
     "redux": "*",
     "redux-immutable-state-invariant": "*",
     "redux-logger": "*",
-    "redux-thunk": "*",
+    "redux-thunk": "*"
+  },
+  "devDependencies":{
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-plugin-transform-decorators-legacy": "*",
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-preset-stage-0": "*",
+    "babel-register": "*",
     "webpack": "*",
     "webpack-dev-middleware": "*",
     "webpack-hot-middleware": "*"
-  },
+  }
   "engines": {
     "node": "4.4.5"
   },

@@ -1,9 +1,5 @@
 import Express from "express";
 
-import webpack from "webpack";
-
-import config from "../webpack.config.js";
-
 import mongoose from "mongoose";
 
 import exphbs from "express-handlebars";
@@ -13,8 +9,6 @@ import passport from "passport";
 import bodyParser from "body-parser";
 
 require("dotenv").config();
-
-const compiler = webpack(config);
 
 const app = Express();
 
@@ -28,14 +22,8 @@ mongoose.connect(process.env.NODE_ENV == "development" ? "mongodb://localhost/bo
 
 app.use(bodyParser.json());
 
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
-
-app.use(require('webpack-hot-middleware')(compiler));
-
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+
 app.set('view engine', 'handlebars');
 
 app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
@@ -45,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/api", require("./api/api"));
+
 app.get("/*", function(req, res){
   res.status(200).end(renderFullPage());
 });
