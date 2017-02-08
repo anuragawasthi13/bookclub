@@ -15,9 +15,9 @@ export default function configureStore(initialState) {
     // https://github.com/gaearon/redux-thunk#injecting-a-custom-argument
     thunkMiddleware,
   ];
-  const store = createStore(reducer, initialState, compose(
-    applyMiddleware(...middewares)
-    )
-  );
+
+  const store = process.env.NODE_ENV == "development" ? createStore(reducer, initialState, compose(applyMiddleware(...middewares)))
+                                                      : createStore(reducer, initialState, compose(applyMiddleware(thunkMiddleware)));
+
   return store;
 }
