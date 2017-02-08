@@ -42,7 +42,7 @@
     "webpack": "*",
     "webpack-dev-middleware": "*",
     "webpack-hot-middleware": "*"
-  }
+  },
   "engines": {
     "node": "4.4.5"
   },
